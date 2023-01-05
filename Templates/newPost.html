@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}blogIT | Validate Post{% endblock title %}
+
+{% block lsbtn %}
+<a href="{% url 'login' %}" class="btn btn-outline-info rounded-pill mx-1">Login</a>
+<a href="{% url 'signup' %}" class="btn btn-outline-info rounded-pill mx-1">Sign Up</a>
+{% endblock lsbtn %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12"></div>
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="card card-shad mt-5">
+                <div class="card-body">
+                    <form action="/newpost/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="title" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Title</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" placeholder="Leave a comment here" name="content" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Content</label>
+                        </div>
+                        <center><input class="btn btn-outline-success btn-lg btn-block px-5" type="submit" value="Request to Post"></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12"></div>
+    </div>
+</div>
+
+{% endblock content %}

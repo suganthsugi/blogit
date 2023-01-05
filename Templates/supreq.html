@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}blogIT | Validate Post{% endblock title %}
+{% block supreq %}active{% endblock supreq %}
+
+{% block lsbtn %}
+<a href="{% url 'login' %}" class="btn btn-outline-info rounded-pill mx-1">Login</a>
+<a href="{% url 'signup' %}" class="btn btn-outline-info rounded-pill mx-1">Sign Up</a>
+{% endblock lsbtn %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% for x in reqs %}
+        <div class="col-md-6 col-sm-12">
+            <div class="card my-2">
+                <div class="card-body">
+                    <p class="h5">Username : {{x.blogger.blogUser.username}}</p>
+                    <a href="{% url 'makesup' x.id %}" class="btn btn-outline-success btn-sm float-start">Promote</a>
+                    <a href="" class="btn btn-outline-danger btn-sm float-end">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

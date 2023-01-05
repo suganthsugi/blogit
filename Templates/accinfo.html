@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}blogIT | Home{% endblock title %}
+{% block homeActive %}active{% endblock homeActive %}
+{% block lsbtn %}
+<a href="{% url 'login' %}" class="btn btn-outline-info rounded-pill mx-1">Login</a>
+<a href="{% url 'signup' %}" class="btn btn-outline-info rounded-pill mx-1">Sign Up</a>
+{% endblock lsbtn %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12"></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+
+            <div class="card mt-5 card-shad">
+                <div class="card-body">
+                    <p class="h5">Username : {{user.username|title}}</p>
+                    {% if user.is_superuser %}
+                        <p class="h5">User Type : Admin</p>
+                    {% else %}
+                        <p class="h5">User Type : {{blogger.userType.userType}}</p>
+                    {% endif %}
+                    <a href="/{{link}}" class="btn btn-primary">{{btntxt}}</a>
+                </div>
+            </div>
+            {% else %}
+            <center><p class="h3">Login / Sign Up to continue</p></center>
+            {% endif %}
+        <div>
+        <div class="col-lg-3 col-md-3 col-sm-12"></div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}blogIT | Validate Post{% endblock title %}
+
+{% block lsbtn %}
+<a href="{% url 'login' %}" class="btn btn-outline-info rounded-pill mx-1">Login</a>
+<a href="{% url 'signup' %}" class="btn btn-outline-info rounded-pill mx-1">Sign Up</a>
+{% endblock lsbtn %}
+
+{% block content %}
+<h1 class="h1 text-center">Validate Post</h1>
+<hr>
+<div class="container mt-3">
+    <div class="row">
+        {% for blog in blogs %}
+        <div class="col-md-3">
+            <a href="" style="text-decoration: none;" class="text-dark">
+                <div class="card card-shad mt-4">
+                    <div class="card-body pt-3 pb-1">
+                        <p class="h4">{{blog.blogTitle}}</p>
+                    </div>
+                    <hr class="py-0 my-0 mb-1">
+                    <div class="card-body py-0 pb-1">
+                        {{blog.blogContent}}
+                    </div>
+                    <hr class="py-0 my-0 mb-1">
+                    <div class="card-body py-0 pb-1">
+                        <small class="float-end">Author:{{blog.author.username|title}}</small>
+                        <small class="float-start">Last Modified:</small><br>
+                        <small class="float-start">{{blog.dateModified}}</small>
+                        <a href="{% url 'validatePostById' blog.id %}" class="btn btn-outline-info btn-sm float-end">Validate</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
